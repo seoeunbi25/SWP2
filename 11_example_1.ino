@@ -76,8 +76,7 @@ void loop() {
   }
 
   // Apply ema filter here  
-  dist_ema = dist_raw;
-  dist_ema = dist_raw * _EMA_ALPHA + dist_prev * (1 - _EMA_ALPHA);
+  dist_ema = dist_raw * _EMA_ALPHA + dist_ema * (1 - _EMA_ALPHA);
 
   // adjust servo position according to the USS read value
   // add your code here!

@@ -20,8 +20,8 @@
                           // Setting EMA to 1 effectively disables EMA filter.
 
 // Target Distance
-#define _TARGET_LOW  250.0
-#define _TARGET_HIGH 290.0 
+#define _TARGET_LOW  180.0
+#define _TARGET_HIGH 360.0 
 
 // duty duration for myservo.writeMicroseconds()
 // NEEDS TUNING (servo by servo)
@@ -76,7 +76,8 @@ void loop() {
   }
 
   // Apply ema filter here  
-  dist_ema = dist_raw * _EMA_ALPHA + dist_ema * (1 - _EMA_ALPHA);
+  dist_prev = dist_ema;
+  dist_ema = dist_raw * _EMA_ALPHA + dist_prev * (1 - _EMA_ALPHA);
 
   // adjust servo position according to the USS read value
   // add your code here!
